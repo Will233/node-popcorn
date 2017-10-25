@@ -4,11 +4,11 @@ import sys
 print "name: ", sys.argv[0]
 for i in range(1, len(sys.argv)):#这里参数从1开始
     print "param", i, sys.argv[i]
-fileNo = sys.argv[1]
-rawFileName = './raw/' + fileNo
-dataFileName = './out/' + fileNo
-tmpFileName =  './tmp/' + fileNo
-sortFileName = './sort/' + fileNo
+# fileNo = sys.argv[1]
+rawFileName = sys.argv[1]
+dataFileName = sys.argv[2]
+tmpFileName =  sys.argv[3]
+sortFileName = sys.argv[4]
 # 分词
 thu1 = thulac.thulac(seg_only=True) #默认模式
 # text = thu1.cut("我爱北京天安门", text=False) #一句话分词
