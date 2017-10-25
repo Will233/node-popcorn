@@ -14,7 +14,11 @@ const timeout = (time) => {
   })
 }
 
-const url = 'http://www.jianshu.com/p/ec78f6489153'
+const iGetInnerText = (txt) => {
+    return txt.replace(/\ +/g, '').replace(/[]/g, '').replace(/[\r\n]/g, '')
+}
+const args = process.argv.splice(2)
+const url = args[0] || 'http://www.jianshu.com/p/ec78f6489153'
 
 puppeteer.launch().then(async browser => {
   let page = await browser.newPage()
@@ -33,17 +37,19 @@ puppeteer.launch().then(async browser => {
   let info = article.slice(idx, idx2)
   console.log('### 简介 ###')
   console.log(info)
-  let content = article.slice(idx2)
+  let content = iGetInnerText(article.slice(idx2))
   console.log('### 内容 ###')
   console.log(content)
   // 写入文件
-  // const filename = title.concat('.txt')
+  const fileDir = ['./raw/', './out/', './tmp/', './sort/']
   const filename = '1.txt'
+  const fileArg = fileDir.map((d) => d + filename).join(' ')
+  console.log(fileArg);
   fs.writeFile('./raw/' + filename, content, (err) => {
     if (err) {
       throw err
     } else {
-      execPython(filename)
+      execPython(fileArg)
       console.log('save success')
     }
   })
