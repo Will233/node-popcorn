@@ -1,0 +1,8 @@
+# .gitignore config
+node_modules
+raw
+out
+tmp
+sort
+dict
+package-lock.json

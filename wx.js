@@ -41,15 +41,16 @@ puppeteer.launch().then(async browser => {
   console.log('### 内容 ###')
   console.log(content)
   // 写入文件
+  const pythonScript = ['./python/divider2.py', './python/divider.py']
   const fileDir = ['./raw/', './out/', './tmp/', './sort/']
-  const filename = '1.txt'
+  const filename = '18.txt'
   const fileArg = fileDir.map((d) => d + filename).join(' ')
   console.log(fileArg);
   fs.writeFile('./raw/' + filename, content, (err) => {
     if (err) {
       throw err
     } else {
-      execPython(fileArg)
+      execPython(pythonScript[1], fileArg)
       console.log('save success')
     }
   })
