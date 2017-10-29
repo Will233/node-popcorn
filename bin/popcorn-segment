@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+console.log('segment')
+var program = require('commander')
+const {segment} = require('../cmd.js')
+const {getAllOption} = require('../utils/args-helper.js')
+
+program
+  .usage('[options] <option-value>')
+  .option('-d, --dictionary', 'set divider dictionary file')
+  .option('-e, --engine', 'set divider engine: jieba || thulac')
+  .option('-s, --source', 'set data source file')
+  .option('-t, --target', 'set target file')
+  .parse(process.argv);
+
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+
+// 调用help
+help()
+// 解析options
+const cmdOptions = getAllOption(program)
+
+let option = {
+  dictionary: cmdOptions.dictionary || './dict/segment-demo.txt',
+  engine: cmdOptions.engine ? cmdOptions.engine : 'jieba',
+  source: cmdOptions.source ? cmdOptions.source : './raw/source-demo.txt',
+  target: cmdOptions.target ? cmdOptions.target : './out/target-demo.txt'
+}
+// 开始分词
+segment(option)
+

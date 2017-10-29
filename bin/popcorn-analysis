@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+console.log('analysis')
+var program = require('commander')
+const {analysis} = require('../cmd.js')
+const {getAllOption} = require('../utils/args-helper.js')
+
+program
+  .usage('[options] <option-value>')
+  .option('-s, --source', 'set data source file')
+  .option('-t, --target', 'set target file')
+  .parse(process.argv);
+
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+
+// 调用help
+help()
+// 解析options
+const cmdOptions = getAllOption(program)
+
+let option = {
+  source: cmdOptions.source ? cmdOptions.source : './out/target-demo.txt',
+  target: cmdOptions.target ? cmdOptions.target : './sort/target-demo.txt'
+}
+
+analysis(option)
