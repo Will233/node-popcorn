@@ -73,6 +73,7 @@ wordItemArray.sort(reverse = True)
 
 for item in wordItemArray:
   wf.write(item.label+' '+str(item.times) + '\n')
+wf.close()
 print "源文件", sourceFile
 print "目标文件", targetFile
 print "\n###### Analysis Finish ######"
