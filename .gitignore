@@ -2,5 +2,6 @@
 /tmp
 /raw
 /sort
+/dict
 /node_modules
 package-lock.json
