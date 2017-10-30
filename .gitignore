@@ -1,0 +1,6 @@
+/out
+/tmp
+/raw
+/sort
+/node_modules
+package-lock.json
