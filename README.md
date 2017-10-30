@@ -5,6 +5,6 @@
 > - puppeteer 抓去网页内容
 
 ### 命令
-> popcorn -h //查看帮助
-> popcorn segment -h // 查看分词命令
-> popcorn analysis -h // 查看分析命令
+- > popcorn -h //查看帮助
+- > popcorn segment -h // 查看分词命令
+- > popcorn analysis -h // 查看分析命令
